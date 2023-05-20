@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <title>{% block title %}Le Quai Antique{% endblock %}</title>
+        <link rel="icon" href="{{ asset('documents/images/logo-light-resto-ConvertImage.png') }}">
+
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
@@ -14,6 +15,48 @@
         {% endblock %}
     </head>
     <body>
+        {% block header %}
+            <header class="p-3 text-bg-light">
+                <div class="container test">
+                    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                        <a href="{{ path('app_home') }}" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                            <img src="{{ asset('documents/images/Logo Resto Orange ECF.png') }}" alt="Le Quai Antique">
+                        </a>
+
+                        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                            <li><a href="{{ path('app_menu') }}" class="nav-link px-2 text-secondary">Menu & Carte</a></li>
+                            <li><a href="{{ path('app_reservation') }}" class="nav-link px-2 text-secondary">Réservation</a></li>
+                            <li><a href="{{ path('app_home', ) }}" class="nav-link px-2 text-secondary">Contact</a></li>
+                        </ul>
+
+                        <div class="text-end">
+                            <button type="button" class="btn btn-primary me-2">Login</button>
+                            <button type="button" class="btn btn-warning ">Sign-up</button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+        {% endblock %}
         {% block body %}{% endblock %}
+        {% block footer %}
+
+        <div class="footer bg-primary text-light">
+            <div class="container row">
+                <div class="col-6 footer_shedule d-flex flex-column justify-content-evenly align-items-center">
+                    <h3>Horaires</h3>
+
+                </div>
+                <div class="col-6 footer_data d-flex flex-column justify-content-evenly align-items-center m-5">
+                    <a href="{{ path('app_reservation') }}" class="btn btn-secondary">Réservez votre table</a>
+                    <img src="{{ asset('documents/images/Logo REsto ECF blanc.png') }}" alt="votre-logo"/>
+                    <span>© 2023 Le Quai Antique - </span><a href="{{ path('app_home') }}" class="ml">Mentions légales</a></span>
+
+                </div>
+            </div>
+
+        </div>
+
+        {% endblock %}
     </body>
 </html>
