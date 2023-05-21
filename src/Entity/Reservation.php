@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\ReservationRepository;
+use Cassandra\Time;
 use Doctrine\DBAL\Types\Types;
+use Symfony\Component\Form\FormTypeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ReservationRepository::class)]
@@ -34,6 +36,9 @@ class Reservation
 
     #[ORM\Column]
     private ?bool $validated = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $period = null;
 
     public function getId(): ?int
     {
@@ -120,6 +125,18 @@ class Reservation
     public function setValidated(bool $validated): self
     {
         $this->validated = $validated;
+
+        return $this;
+    }
+
+    public function getPeriod(): ?string
+    {
+        return $this->period;
+    }
+
+    public function setPeriod(string $period): self
+    {
+        $this->period = $period;
 
         return $this;
     }

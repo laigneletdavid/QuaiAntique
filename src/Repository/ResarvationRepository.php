@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Restorant;
+use App\Entity\Resarvation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Restorant>
+ * @extends ServiceEntityRepository<Resarvation>
  *
- * @method Restorant|null find($id, $lockMode = null, $lockVersion = null)
- * @method Restorant|null findOneBy(array $criteria, array $orderBy = null)
- * @method Restorant[]    findAll()
- * @method Restorant[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Resarvation|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Resarvation|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Resarvation[]    findAll()
+ * @method Resarvation[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class RestorantRepository extends ServiceEntityRepository
+class ResarvationRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Restorant::class);
+        parent::__construct($registry, Resarvation::class);
     }
 
-    public function save(Restorant $entity, bool $flush = false): void
+    public function save(Resarvation $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class RestorantRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Restorant $entity, bool $flush = false): void
+    public function remove(Resarvation $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class RestorantRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Restorant[] Returns an array of Restorant objects
+//     * @return Resarvation[] Returns an array of Resarvation objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class RestorantRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Restorant
+//    public function findOneBySomeField($value): ?Resarvation
 //    {
 //        return $this->createQueryBuilder('r')
 //            ->andWhere('r.exampleField = :val')

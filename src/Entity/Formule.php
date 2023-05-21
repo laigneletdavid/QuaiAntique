@@ -25,13 +25,10 @@ class Formule
     #[ORM\Column(length: 255)]
     private ?string $period = null;
 
-    #[ORM\ManyToMany(targetEntity: menu::class, inversedBy: 'formules')]
-    private Collection $menu;
 
-    public function __construct()
-    {
-        $this->menu = new ArrayCollection();
-    }
+    #[ORM\ManyToOne(inversedBy: 'formules')]
+    private ?menu $menu = null;
+
 
     public function getId(): ?int
     {
@@ -74,27 +71,17 @@ class Formule
         return $this;
     }
 
-    /**
-     * @return Collection<int, menu>
-     */
-    public function getMenu(): Collection
+
+    public function getMenu(): ?menu
     {
         return $this->menu;
     }
 
-    public function addMenu(menu $menu): self
+    public function setMenu(?menu $menu): self
     {
-        if (!$this->menu->contains($menu)) {
-            $this->menu->add($menu);
-        }
+        $this->menu = $menu;
 
         return $this;
     }
 
-    public function removeMenu(menu $menu): self
-    {
-        $this->menu->removeElement($menu);
-
-        return $this;
-    }
 }

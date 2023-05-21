@@ -3,7 +3,58 @@
 {% block title %}Réservation{% endblock %}
 
 {% block body %}
+
+
     <div class="container">
+
+        {% if  message != null %}
+            <div class="message succes m-5">
+                <p class="message_text">{{ message }}</p>
+            </div>
+        {% endif %}
+
+
         <h1>Réservation</h1>
+
+        <h2>Places disponibles</h2>
+        {{ resto.nbrPlace }}
+
+        <h2>Forumlaire de réservation</h2>
+
+        {{ form_start(form) }}
+
+            {{ form_label(form.customer_name) }}
+            {{ form_widget(form.customer_name) }}
+
+            {{ form_label(form.customer_phone) }}
+            {{ form_widget(form.customer_phone) }}
+
+            {{ form_label(form.nbr_reservation) }}
+            {{ form_widget(form.nbr_reservation) }}
+
+            {{ form_label(form.allergy) }}
+            {{ form_widget(form.allergy) }}
+
+            {{ form_label(form.reserved_at) }}
+            {{ form_widget(form.reserved_at) }}
+
+            {{ form_label(form.reserved_time) }}
+            {{ form_widget(form.reserved_time) }}
+
+            <input type="submit" class="btn btn-primary" value="Réserver">
+
+        {{ form_end(form) }}
+
+
     </div>
+
+    <script>
+        $(document).ready(function() {
+            // you may need to change this code if you are not using Bootstrap Datepicker
+            $('.js-datepicker').datepicker({
+                format: 'yyyy-mm-dd'
+            });
+        });
+    </script>
+
 {% endblock %}

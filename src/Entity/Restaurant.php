@@ -2,10 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\RestorantRepository;
+use App\Repository\RestaurantRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: RestorantRepository::class)]
+#[ORM\Entity(repositoryClass: RestaurantRepository::class)]
 class Restaurant
 {
     #[ORM\Id]
@@ -36,6 +36,9 @@ class Restaurant
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $google_maps = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
 
     public function getId(): ?int
     {
@@ -134,6 +137,18 @@ class Restaurant
     public function setGoogleMaps(?string $google_maps): self
     {
         $this->google_maps = $google_maps;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }

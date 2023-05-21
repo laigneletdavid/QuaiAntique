@@ -19,7 +19,7 @@ class Shedule
     #[ORM\Column(length: 255)]
     private ?string $period = null;
 
-    #[ORM\Column(length: 5)]
+    #[ORM\Column(length: 50)]
     private ?string $time = null;
 
     #[ORM\Column]

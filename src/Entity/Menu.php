@@ -21,7 +21,7 @@ class Menu
     #[ORM\Column]
     private ?bool $visible = null;
 
-    #[ORM\ManyToMany(targetEntity: Formule::class, mappedBy: 'menu')]
+    #[ORM\OneToMany(mappedBy: 'menu', targetEntity: Formule::class)]
     private Collection $formules;
 
     public function __construct()
@@ -33,6 +33,7 @@ class Menu
     {
         return $this->id;
     }
+
 
     public function getName(): ?string
     {
@@ -70,7 +71,7 @@ class Menu
     {
         if (!$this->formules->contains($formule)) {
             $this->formules->add($formule);
-            $formule->addMenu($this);
+            $formule->setMenu($this);
         }
 
         return $this;
@@ -79,9 +80,19 @@ class Menu
     public function removeFormule(Formule $formule): self
     {
         if ($this->formules->removeElement($formule)) {
-            $formule->removeMenu($this);
+            // set the owning side to null (unless already changed)
+            if ($formule->getMenu() === $this) {
+                $formule->setMenu(null);
+            }
         }
 
         return $this;
+    }
+
+
+
+    public function __toString(): string
+    {
+        return $this->name;
     }
 }
