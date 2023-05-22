@@ -11,6 +11,7 @@ use App\Entity\Reservation;
 use App\Entity\Restaurant;
 use App\Entity\Shedule;
 use App\Entity\SheduleResa;
+use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -84,8 +85,8 @@ class DashboardController extends AbstractDashboardController
         ]);
 
         yield MenuItem::subMenu('Utilisateurs', 'fas fa-user')->setSubItems([
-            MenuItem::linkToCrud('Toutes les utilisateurs', 'fas fa-user', Photo::class),
-            MenuItem::linkToCrud('Ajouter un utilisateur', 'fas fa-plus', Photo::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('Toutes les utilisateurs', 'fas fa-user-friends', User::class),
+            MenuItem::linkToCrud('Ajouter un utilisateur', 'fas fa-plus', User::class)->setAction(Crud::PAGE_NEW),
         ]);
 
 

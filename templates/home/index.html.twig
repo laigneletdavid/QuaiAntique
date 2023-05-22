@@ -5,22 +5,14 @@
 {% block body %}
 <div class="container">
     <div class="row galerie">
-        <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
-            <img src="{{ asset('documents/images/img-500.png') }}" class="w-100 shadow-1-strong rounded mb-4" alt="Boat on Calm Water">
+        <div class="col-md-12 mb-4 mb-lg-0 d-flex flex-row hstack gap-3">
+        {% for photo in photos %}
+            <div class="photo">
+                <img src="{{ asset('documents/photos/'~photo.fileName ) }}" class="shadow-1-strong rounded mb-4" alt="{{ photo.name }}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top">
+                <span class="hover_photo" style="display:none;">{{ photo.name }}</span>
+            </div>
+        {% endfor %}
 
-            <img src="{{ asset('documents/images/img-500.png') }}" class="w-100 shadow-1-strong rounded mb-4" alt="Wintry Mountain Landscape">
-        </div>
-
-        <div class="col-lg-4 mb-4 mb-lg-0">
-            <img src="{{ asset('documents/images/img-500.png') }}" class="w-100 shadow-1-strong rounded mb-4" alt="Mountains in the Clouds">
-
-            <img src="{{ asset('documents/images/img-500.png') }}" class="w-100 shadow-1-strong rounded mb-4" alt="Boat on Calm Water">
-        </div>
-
-        <div class="col-lg-4 mb-4 mb-lg-0">
-            <img src="{{ asset('documents/images/img-500.png') }}" class="w-100 shadow-1-strong rounded mb-4" alt="Waves at Sea">
-
-            <img src="{{ asset('documents/images/img-500.png') }}" class="w-100 shadow-1-strong rounded mb-4" alt="Yosemite National Park">
         </div>
     </div>
 
@@ -118,4 +110,7 @@
 
 
 </div>
+
+
+
 {% endblock %}

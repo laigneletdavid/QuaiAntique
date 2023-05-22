@@ -30,10 +30,21 @@
                             <li><a href="{{ path('app_home', ) }}" class="nav-link px-2 text-secondary">Contact</a></li>
                         </ul>
 
-                        <div class="text-end">
-                            <button type="button" class="btn btn-primary me-2">Login</button>
-                            <button type="button" class="btn btn-warning ">Sign-up</button>
-                        </div>
+
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <div class="text-end d-flex flex-column justify-content-evenly align-items-center">
+                                <p>Bonjour {{ app.user.email }} !</p>
+                                <div class="d-flex flex-row">
+                                    <a href="{{ path('app_user_show', {'id': app.user.id}) }}" type="button" class="btn btn-primary me-2">Mon profil</a>
+                                    <a href="{{ path('app_logout') }}" type="button" class="btn btn-outline-warning me-2">Se déconnecter</a>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="text-endd-flex flex-row justify-content-evenly align-items-center">
+                                <a href="{{ path('app_login') }}" type="button" class="btn btn-primary me-2">Se connecter</a>
+                                <a href="{{ path('app_register') }}" type="button" class="btn btn-outline-warning ">Créer un compte</a>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </header>

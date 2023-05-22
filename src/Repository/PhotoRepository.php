@@ -39,20 +39,20 @@ class PhotoRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Photo[] Returns an array of Photo objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('p.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+   /**
+     * @return Photo[] Returns an array of Photo objects
+     */
+    public function findPhotosVisible($value): array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.visible = :val')
+            ->setParameter('val', $value)
+            ->orderBy('p.id', 'ASC')
+            ->setMaxResults(6)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
 //    public function findOneBySomeField($value): ?Photo
 //    {
