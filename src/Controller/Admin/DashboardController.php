@@ -59,8 +59,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('Les réservations', 'fas fa-utensils')->setSubItems([
            MenuItem::linkToCrud('Toutes les réservations', 'fas fa-utensils', Reservation::class),
             MenuItem::linkToCrud('Ajouter une réservation', 'fas fa-plus', Reservation::class)->setAction(Crud::PAGE_NEW),
-            MenuItem::linkToCrud('Tous les horaires de réservation', 'fas fa-clock', SheduleResa::class),
-            MenuItem::linkToCrud('Ajouter un horaire de réservation', 'fas fa-plus', SheduleResa::class)->setAction(Crud::PAGE_NEW),
+
 
         ]);
 

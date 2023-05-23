@@ -20,10 +20,6 @@ class ReservationController extends AbstractController
     #[Route('/reservation', name: 'app_reservation')]
     public function index(Request $request, SheduleRepository $sheduleRepository, UserRepository $userRepository, EntityManagerInterface  $em, RestaurantRepository $restaurantRepository, ResarvationRepository $resarvationRepository): Response
     {
-
-        $visible = 1;
-        $shedules = $sheduleRepository->findByShedulesVisible($visible);
-
         $resa = new Reservation();
         $resa->setValidated(false);
 
@@ -31,20 +27,23 @@ class ReservationController extends AbstractController
         $user = $this->getUser();
 
         if ($user !== null){
-            $resa->setCustomerName($user->getFullName());
-            $resa->setAllergy($user->getAllergy());
-            $resa->setNbrReservation($user->getNbrResa());
+            $resa->setCustomerName($user->getFullName() ?? '');
+            $resa->setAllergy($user->getAllergy() ?? '');
+            $resa->setNbrReservation($user->getNbrResa() ?? 0);
         }
 
         $form = $this->createForm(ReservationType::class, ($resa)) ;
         $message = null;
 
         $form-> handlerequest($request);
-           if ($form->isSubmitted() && $form->isValid()) {
-                $em->persist($resa);
-                $em->flush();
-               $message = 'Votre réservation a bien été prise en compte !';
-           }
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($resa);
+            $em->flush();
+           $message = 'Votre réservation a bien été prise en compte !';
+        }
+
+        $visible = 1;
+        $shedules = $sheduleRepository->findByShedulesVisible($visible);
 
         return $this->render('reservation/index.html.twig', [
             'controller_name' => 'ReservationController',

@@ -3,6 +3,7 @@
 
   .photo {
     max-width: 30%;
+    position: relative;
     @media (max-width: 991.98px) {
       max-width: 45%;
     }
@@ -21,14 +22,15 @@
     }
     .hover_photo {
       display: none;
-      position: relative;
-      top: -5em;
+      position: absolute;
+      bottom: 20%;
       z-index: 2;
-      right: -3em;
+      right: 50%;
       background-color: rgb(240 240 244 / 0.7);
       max-width: 75%;
       padding: 0.5rem;
       border-radius: 0.5rem;
+      tranform: translateX(50%);
     }
   }
 }
