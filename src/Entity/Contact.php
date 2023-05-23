@@ -26,6 +26,9 @@ class Contact
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
 
+    #[ORM\Column]
+    private ?bool $lu = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class Contact
     public function setContent(string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function isLu(): ?bool
+    {
+        return $this->lu;
+    }
+
+    public function setLu(bool $lu): self
+    {
+        $this->lu = $lu;
 
         return $this;
     }

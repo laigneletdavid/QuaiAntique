@@ -1,0 +1,24 @@
+.contact_list {
+  padding: 0;
+
+  .logo {
+    img {
+      max-width: 100%;
+    }
+  }
+  @media (max-width: 991.98px) {
+    align-items: center;
+  }
+}
+
+.maps {
+  iframe {
+    max-width: 100%;
+    margin: auto;
+  }
+}
+.contact_actions {
+  @media (max-width: 991.98px) {
+    align-items: center;
+  }
+}

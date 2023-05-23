@@ -39,6 +39,20 @@ class SheduleRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * @return Shedule[] Returns an array of Photo objects
+     */
+    public function findByShedulesVisible($value): array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.visible = :val')
+            ->setParameter('val', $value)
+            ->orderBy('p.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 //    /**
 //     * @return Shedule[] Returns an array of Shedule objects
 //     */

@@ -16,45 +16,23 @@
 
         <h1>Réservation</h1>
 
-        <h2>Places disponibles</h2>
-        {{ resto.nbrPlace }}
+        <p>Afin d'être certain d'avoir une place dans notre restaurant, prenez 5 minutes pour réserver votre table.</p>
+        <p>Tout sera ainsi près pour vous à votre arrivée.</p>
 
-        <h2>Forumlaire de réservation</h2>
+        <h2 class="title">Formulaire de réservation</h2>
 
         {{ form_start(form) }}
 
-            {{ form_label(form.customer_name) }}
-            {{ form_widget(form.customer_name) }}
+            {{ form_rest(form) }}
 
-            {{ form_label(form.customer_phone) }}
-            {{ form_widget(form.customer_phone) }}
-
-            {{ form_label(form.nbr_reservation) }}
-            {{ form_widget(form.nbr_reservation) }}
-
-            {{ form_label(form.allergy) }}
-            {{ form_widget(form.allergy) }}
-
-            {{ form_label(form.reserved_at) }}
-            {{ form_widget(form.reserved_at) }}
-
-            {{ form_label(form.reserved_time) }}
-            {{ form_widget(form.reserved_time) }}
-
-            <input type="submit" class="btn btn-primary" value="Réserver">
+            <input type="submit" class="btn btn-primary mb-5 text-light" value="Réserver">
 
         {{ form_end(form) }}
 
 
     </div>
 
-    <script>
-        $(document).ready(function() {
-            // you may need to change this code if you are not using Bootstrap Datepicker
-            $('.js-datepicker').datepicker({
-                format: 'yyyy-mm-dd'
-            });
-        });
-    </script>
+
+
 
 {% endblock %}

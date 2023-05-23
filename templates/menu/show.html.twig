@@ -4,6 +4,44 @@
 
 {% block body %}
 <div class="container">
-    <h1>Menu & carte</h1>
+    <h1 class="mb-5">Menu & carte</h1>
+
+    <div class="carte mb-5 part">
+        <h2 class="title mb-4">Les plats à la carte</h2>
+        <ul class="dishes d-flex flex-column">
+            {% for d in dishes %}
+                <li class="dish d-flex flex-column mb-4">
+                    <span class="name_dishe bold">{{ d.name }}</span>
+                    <span class="name_dishe">{{ d.description }}</span>
+                    <span class="name_dishe bold text-secondary">{{ d.price|number_format(2, ',', ' ') }} €</span>
+                </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+    <div class="menu mb-5 part">
+        <h2 class="title">Nos menus à la carte</h2>
+        <div class="menus d-flex     justify-content-evenly hstack gap-4">
+            {% for menu in menus %}
+                <div class="menu_details  d-flex flex-column">
+                    <h3 class="menu-tilte mb-4">{{ menu.name }}</h3>
+
+                    {% for formule in formules %}
+                          {% if menu.name == formule.menu %}
+
+                            <div class="formulen mb-5 d-flex flex-column align-items-center">
+                                <span class="bold">{{ formule.content }}</span>
+                                <span class="small">{{ formule.period }}</span>
+                                <span class="bold text-secondary">{{ formule.price|number_format(2, ',', ' ') }} €</span>
+
+                            </div>
+                        {% endif %}
+
+                    {% endfor %}
+
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
 {% endblock %}

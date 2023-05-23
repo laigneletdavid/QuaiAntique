@@ -1,0 +1,26 @@
+.part {
+  max-width: 75%;
+  margin:auto;
+}
+
+.menu {
+
+  .menu_details {
+    background-color: $qa_light_grey;
+    color: $qa_background;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+  .menu-tilte {
+    font-weight: 600;
+    font-family: "Baskerville Old Face" !important;
+  }
+  .menus {
+    flex-direction: row;
+    @media (max-width: 767px) {
+      flex-direction: column;
+    }
+  }
+
+}

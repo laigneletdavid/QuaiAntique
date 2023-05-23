@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Shedule;
 use App\Entity\SheduleResa;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -38,6 +39,10 @@ class SheduleResaRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+
+
+
 
 //    /**
 //     * @return SheduleResa[] Returns an array of SheduleResa objects

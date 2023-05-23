@@ -1,0 +1,41 @@
+.smallcreen {
+  display: none;
+  @media (max-width: 991.98px) {
+    display: block;
+  }
+
+  .offcanvas-body {
+    display:block;
+  }
+}
+
+
+
+.desk {
+  display: block;
+  @media (max-width: 991.98px) {
+    display: none;
+  }
+
+
+}
+.link_logo {
+  max-width: 30%;
+  @media (max-width: 991.98px) {
+    max-width: 60%;
+  }
+
+  img {
+    width:100%;
+  }
+}
+
+
+.nav-link {
+  color: $qa_dark_grey !important;
+
+  &:hover {
+    color: $secondary !important;
+    colro: #FFF;
+  }
+}

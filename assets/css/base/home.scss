@@ -1,9 +1,46 @@
 .galerie {
+  margin: auto;
 
   .photo {
-
+    max-width: 30%;
+    @media (max-width: 991.98px) {
+      max-width: 45%;
+    }
+    @media (max-width: 767px) {
+      max-width: 100%;
+    }
+    &:hover .hover_photo{
+        display: block;
+    }
+    &:hover img{
+      border: solid 0.3rem $primary;
+    }
     img {
-      max-widt: 100%;
+      max-width: 100%;
+
+    }
+    .hover_photo {
+      display: none;
+      position: relative;
+      top: -5em;
+      z-index: 2;
+      right: -3em;
+      background-color: rgb(240 240 244 / 0.7);
+      max-width: 75%;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
     }
   }
+}
+
+.cta{
+  background-color: $qa_background;
+  .cta_title {
+    border-bottom: solid 0.3rem $primary;
+    padding-bottom: 1rem;
+    font-family: "Baskerville Old Face" !important;
+  }
+}
+.cta_img {
+  padding: 0;
 }

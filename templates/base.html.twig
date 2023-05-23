@@ -14,37 +14,93 @@
             {{ encore_entry_script_tags('app') }}
 
         {% endblock %}
+
+
     </head>
     <body>
         {% block header %}
             <header class="p-3 text-bg-light">
-                <div class="container test">
-                    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                        <a href="{{ path('app_home') }}" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                            <img src="{{ asset('documents/images/Logo Resto Orange ECF.png') }}" alt="Le Quai Antique">
+                <div class="container">
+                    <div class="desk">
+                        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                        <a href="{{ path('app_home') }}" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none link_logo">
+                            <img src="{{ asset('documents/images/Logo Resto Orange ECF.png') }}" alt="Le Quai Antique" >
                         </a>
 
-                        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                            <li><a href="{{ path('app_menu') }}" class="nav-link px-2 text-secondary">Menu & Carte</a></li>
-                            <li><a href="{{ path('app_reservation') }}" class="nav-link px-2 text-secondary">Réservation</a></li>
-                            <li><a href="{{ path('app_home', ) }}" class="nav-link px-2 text-secondary">Contact</a></li>
+                        <ul class="nav col-12 col-lg-auto me-md-auto mb-2 justify-content-center mb-md-0">
+                            <li class="m-3"><a href="{{ path('app_menu') }}" class="nav-link px-2 qa_up">Menu & Carte</a></li>
+                            <li class="m-3"><a href="{{ path('app_reservation') }}" class="nav-link px-2 qa_up">Réservation</a></li>
+                            <li class="m-3"><a href="{{ path('app_contact') }}" class="nav-link px-2 qa_up">Contact</a></li>
                         </ul>
 
 
                         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                             <div class="text-end d-flex flex-column justify-content-evenly align-items-center">
                                 <p>Bonjour {{ app.user.email }} !</p>
-                                <div class="d-flex flex-row">
-                                    <a href="{{ path('app_user_show', {'id': app.user.id}) }}" type="button" class="btn btn-primary me-2">Mon profil</a>
-                                    <a href="{{ path('app_logout') }}" type="button" class="btn btn-outline-warning me-2">Se déconnecter</a>
+                                <div class="d-flex flex-column hstack gap-2">
+                                    <a href="{{ path('app_user_show', {'id': app.user.id}) }}" type="button" class="btn btn-primary me-2 qa_up text-light">Mon profil</a>
+                                    <a href="{{ path('app_logout') }}" type="button" class="btn btn-outline-warning me-2 qa_up">Se déconnecter</a>
                                 </div>
                             </div>
                         {% else %}
-                            <div class="text-endd-flex flex-row justify-content-evenly align-items-center">
-                                <a href="{{ path('app_login') }}" type="button" class="btn btn-primary me-2">Se connecter</a>
-                                <a href="{{ path('app_register') }}" type="button" class="btn btn-outline-warning ">Créer un compte</a>
+                            <div class="d-flex flex-column justify-content-evenly align-items-center hstack gap-2">
+                                <a href="{{ path('app_login') }}" type="button" class="btn btn-primary me-2 qa_up text-light">Se connecter</a>
+                                <a href="{{ path('app_register') }}" type="button" class="btn btn-outline-secondary qa_up">Créer un compte</a>
                             </div>
                         {% endif %}
+                    </div>
+                    </div>
+                    <div class="smallcreen">
+                            <nav class="navbar">
+                                <div class="container-fluid">
+                                    <a href="{{ path('app_home') }}" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none link_logo">
+                                        <img src="{{ asset('documents/images/Logo Resto Orange ECF.png') }}" alt="Le Quai Antique" >
+                                    </a>
+                                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-icon"></span>
+                                    </button>
+                                    <div class="offcanvas offcanvas-start" tabindex="+1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                                        <div class="offcanvas-header">
+                                            <img src="{{ asset('documents/images/Logo Resto Orange ECF.png') }}" alt="Le Quai Antique" >
+                                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                        </div>
+                                        <div class="offcanvas-body">
+                                            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mb-5">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" aria-current="page" href={{ path('app_home') }}>Accueil</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{{ path('app_menu') }}">Carte & menu</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{{ path('app_reservation') }}">Réservation</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{{ path('app_contact') }}">Contact</a>
+                                                </li>
+
+                                            </ul>
+
+                                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                                <div class="text-end d-flex flex-column justify-content-evenly align-items-center">
+                                                    <p>Bonjour {{ app.user.email }} !</p>
+                                                    <div class="d-flex flex-row">
+                                                        <a href="{{ path('app_user_show', {'id': app.user.id}) }}" type="button" class="btn btn-primary me-2 qa_up text-light">Mon profil</a>
+                                                        <a href="{{ path('app_logout') }}" type="button" class="btn btn-outline-warning me-2 qa_up">Se déconnecter</a>
+                                                    </div>
+                                                </div>
+                                            {% else %}
+                                                <div class="d-flex flex-row">
+                                                    <a href="{{ path('app_login') }}" type="button" class="btn btn-primary me-2 qa_up text-light">Se connecter</a>
+                                                    <a href="{{ path('app_register') }}" type="button" class="btn btn-outline-secondary qa_up">Créer un compte</a>
+                                                </div>
+                                            {% endif %}
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
                     </div>
                 </div>
             </header>
@@ -54,16 +110,64 @@
         {% block footer %}
 
         <div class="footer bg-primary text-light">
-            <div class="container row">
-                <div class="col-6 footer_shedule d-flex flex-column justify-content-evenly align-items-center">
-                    <h3>Horaires</h3>
+            <div class="container">
+                <div class="row d-flex flex-row">
+                    <div class="col-12 col-md-6 footer_shedule d-flex flex-column justify-content-evenly align-items-center mt-5 mb-5">
+                        <h3 class="mb-4 shedule_title">Horaires</h3>
+                        {% for shedule in shedules %}
+                            {% dump(shedule) %}
+                            <div class="shedule_day d-flex flex-row justify-content-evenly">
 
-                </div>
-                <div class="col-6 footer_data d-flex flex-column justify-content-evenly align-items-center m-5">
-                    <a href="{{ path('app_reservation') }}" class="btn btn-secondary">Réservez votre table</a>
-                    <img src="{{ asset('documents/images/Logo REsto ECF blanc.png') }}" alt="votre-logo"/>
-                    <span>© 2023 Le Quai Antique - </span><a href="{{ path('app_home') }}" class="ml">Mentions légales</a></span>
+                                {% if shedule.day == 1 %}
+                                        <span class="day">Lundi</span>
+                                {% elseif shedule.day == 2 %}
+                                        <span class="day">Mardi</span>
+                                {% elseif shedule.day == 3 %}
+                                        <span class="day">Mercredi</span>
+                                {% elseif shedule.day == 4 %}
+                                        <span class="day">jeudi</span>
+                                {% elseif shedule.day == 5 %}
+                                        <span class="day">Vendredi</span>
+                                {% elseif shedule.day == 6 %}
+                                        <span class="day">Samedi</span>
+                                {% else %}
+                                        <span class="day">Dimanche</span>
 
+
+
+                                  {% endif %}
+
+
+                                <div class="shedule_period d-flex flex-column">
+                                    <div class="noon d-flex flex-row  justify-content-evenly">
+                                        <span class="period mr-5">Midi</span>
+                                        <span class="startNoon">{{ shedule.noonStart| date('H:i') }}</span>
+                                        <span class="endNoon">{{ shedule.noonEnd| date('H:i') }}</span>
+                                    </div>
+                                    <div class="evening d-flex flex-row  justify-content-evenly">
+                                        <span class="periodmr-5">Soir</span>
+                                        <span class="startEvening">{{ shedule.eveningStart| date('H:i') }}</span>
+                                        <span class="endEvening">{{ shedule.eveningEnd| date('H:i') }}</span>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                        {% endfor %}
+
+                    </div>
+                    <div class="col-12 col-md-6 footer_data d-flex flex-column justify-content-center align-items-center mb-5">
+                        <a href="{{ path('app_reservation') }}" class="btn btn-secondary text-light mb-4">Réservez votre table</a>
+                        <img src="{{ asset('documents/images/Logo REsto ECF blanc.png') }}" alt="votre-logo" class="mb-4"/>
+                        <ul class="nav d-flex flex-column mb-2 justify-content-center align-items-center mb-md-0">
+                            <li class="m-1"><a href="{{ path('app_menu') }}" class="nav-link px-2 qa_up text-light">Menu & Carte</a></li>
+                            <li class="m-1"><a href="{{ path('app_contact') }}" class="nav-link px-2 qa_up text-light">Contact</a></li>
+                        </ul>
+                        <span>© 2023 Le Quai Antique - </span><a href="{{ path('app_home') }}" class="ml text-light">Mentions légales</a>
+
+                    </div>
                 </div>
             </div>
 

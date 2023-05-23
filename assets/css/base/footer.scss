@@ -1,0 +1,41 @@
+.footer {
+  .footer_data {
+    img {
+      @media (max-width: 767px) {
+        max-width: 75%;
+      }
+    }
+  }
+
+  .shedule_title {
+    border-bottom: solid 0.3rem $secondary;
+    padding-bottom: 1rem;
+    font-family: "Baskerville Old Face" !important;
+  }
+  .footer_shedule {
+
+    border-right: solid 0.3rem $secondary;
+    @media (max-width: 768px) {
+      border-right: none;
+    }
+
+    .shedule_day {
+      width: 100%;
+      padding: 0.5rem;
+
+      .shedule_period {
+        width: 50%;
+      }
+      .day {
+        width:50%;
+        text-align: center;
+        @media (max-width: 768px) {
+          text-align: left;
+          margin-left: 2rem;
+        }
+      }
+    }
+  }
+}
+
+
