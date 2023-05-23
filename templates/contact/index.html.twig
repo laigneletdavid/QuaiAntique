@@ -2,6 +2,13 @@
 
 {% block body %}
     <div class="container">
+
+        {% if  message != null %}
+            <div class="message succes m-5">
+                <p class="message_text bold">{{ message }}</p>
+            </div>
+        {% endif %}
+
      <div class="contact row">
         <h2>Nous Contacter</h2>
         <div class="col-12 col-lg-8 form_contact">

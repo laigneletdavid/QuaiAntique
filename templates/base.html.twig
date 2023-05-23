@@ -31,6 +31,10 @@
                             <li class="m-3"><a href="{{ path('app_menu') }}" class="nav-link px-2 qa_up">Menu & Carte</a></li>
                             <li class="m-3"><a href="{{ path('app_reservation') }}" class="nav-link px-2 qa_up">Réservation</a></li>
                             <li class="m-3"><a href="{{ path('app_contact') }}" class="nav-link px-2 qa_up">Contact</a></li>
+
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li class="m-3"><a href="{{ path('admin') }}" class="nav-link px-2 qa_up">Administration</a></li>
+                            {% endif %}
                         </ul>
 
 

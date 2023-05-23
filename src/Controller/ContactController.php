@@ -23,17 +23,17 @@ class ContactController extends AbstractController
         $contact = new Contact();
         $contact->setLu(false);
 
-        $form = $this->createForm(ContactType::class, ($contact))->createView() ;
+        $form = $this->createForm(ContactType::class, ($contact)) ;
         $message = null;
 
-        /*$form->handleRequest($request);
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($contact);
             $em->flush();
 
             $message = 'Votre message a bien été envoyé !';
-        }*/
+        }
 
 
         $shedules = $sheduleRepository->findByShedulesVisible($visible);
@@ -42,9 +42,10 @@ class ContactController extends AbstractController
         $resto->setPhone($phone);
 
         return $this->render('contact/index.html.twig', [
-            'form' => $form,
+            'form' => $form->createView(),
             'resto' => $resto,
             'shedules' => $shedules,
+            'message' => $message,
         ]);
     }
 }
