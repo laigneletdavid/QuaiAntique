@@ -39,6 +39,20 @@ class DisheRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * @return Dishe[] Returns an array of Formule objects
+     */
+    public function findByVisible($visible): array
+    {
+        return $this->createQueryBuilder('d')
+            ->andWhere('d.visible = :visible')
+            ->setParameter('visible', $visible)
+            ->orderBy('d.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 //    /**
 //     * @return Dishe[] Returns an array of Dishe objects
 //     */

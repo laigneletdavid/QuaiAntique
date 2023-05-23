@@ -25,11 +25,13 @@ class FormuleCrudController extends AbstractCrudController
 
         yield AssociationField::new('menu', 'Menu qui contiendra la formule');
 
-        yield MoneyField::new('price', 'Prix de la formule')
+        yield MoneyField::new('price', 'Prix de la formule au format "12.00" pour 12,00 €')
             ->setCurrency('EUR')
             ->setNumDecimals(2);
 
         yield TextField::new('period', 'Indiquer si il y a une périodicité à la formule');
+
+        yield BooleanField::new('visible', 'Visible pour les clients');
 
     }
 

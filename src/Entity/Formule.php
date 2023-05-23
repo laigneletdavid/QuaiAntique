@@ -29,6 +29,9 @@ class Formule
     #[ORM\ManyToOne(inversedBy: 'formules')]
     private ?menu $menu = null;
 
+    #[ORM\Column]
+    private ?bool $visible = null;
+
 
     public function getId(): ?int
     {
@@ -80,6 +83,23 @@ class Formule
     public function setMenu(?menu $menu): self
     {
         $this->menu = $menu;
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->content;
+    }
+
+    public function isVisible(): ?bool
+    {
+        return $this->visible;
+    }
+
+    public function setVisible(bool $visible): self
+    {
+        $this->visible = $visible;
 
         return $this;
     }

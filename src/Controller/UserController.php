@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\SheduleRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,19 +20,24 @@ class UserController extends AbstractController
 
 
     #[Route('/{id}', name: 'show', methods: ['GET'])]
-    public function show(Request $request, UserRepository $userRepository): Response
+    public function show(Request $request, UserRepository $userRepository, SheduleRepository $sheduleRepository): Response
     {
+        $visible = 1;
+        $shedules = $sheduleRepository->findByShedulesVisible($visible);
 
         $user = $userRepository->find($request->get('id'));
         return $this->render('user/show.html.twig', [
             'user' => $user,
+            'shedules' => $shedules,
         ]);
     }
 
     #[Route('/{id}/edit', name: 'edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher): Response
+    public function edit(Request $request, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher, SheduleRepository $sheduleRepository): Response
     {
         $user = $userRepository->find($request->get('id'));
+        $visible = 1;
+        $shedules = $sheduleRepository->findByShedulesVisible($visible);
 
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -53,17 +59,9 @@ class UserController extends AbstractController
         return $this->renderForm('user/edit.html.twig', [
             'user' => $user,
             'form' => $form,
+            'shedules' => $shedules,
         ]);
     }
 
-    #[Route('/{id}', name: 'delete', methods: ['POST'])]
-    //#[IsGranted('ROLE_ADMIN')]
-    public function delete(Request $request, User $user, UserRepository $userRepository): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
-            $userRepository->remove($user, true);
-        }
 
-        return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
-    }
 }

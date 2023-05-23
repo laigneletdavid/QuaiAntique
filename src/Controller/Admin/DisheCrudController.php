@@ -23,7 +23,7 @@ class DisheCrudController extends AbstractCrudController
         yield TextField::new('name', 'Nom du plat');
 
         yield AssociationField::new('category', 'Catégorie du plat');
-        yield TextField::new('description', 'Description du plat');
+        yield TextField::new('description', 'Description du plat au format "12.00" pour 12,00 €');
         yield MoneyField::new('price', 'Prix du plat')
             ->setCurrency('EUR')
             ->setNumDecimals(2);

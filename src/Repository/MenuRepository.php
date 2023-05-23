@@ -39,6 +39,20 @@ class MenuRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * @return Menu[] Returns an array of Photo objects
+     */
+    public function findByMenuVisible($value): array
+    {
+        return $this->createQueryBuilder('m')
+            ->andWhere('m.visible = :val')
+            ->setParameter('val', $value)
+            ->orderBy('m.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 //    /**
 //     * @return Menu[] Returns an array of Menu objects
 //     */

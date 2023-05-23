@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Category;
+use App\Entity\Contact;
 use App\Entity\Dishe;
 use App\Entity\Formule;
 use App\Entity\Menu;
@@ -60,6 +61,8 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Ajouter un horaire de réservation', 'fas fa-plus', SheduleResa::class)->setAction(Crud::PAGE_NEW),
 
         ]);
+
+        yield MenuItem::linkToCrud('Messagerie', 'fas fa-envelope', Contact::class);
 
         yield MenuItem::subMenu('Les plats', 'fas fa-stroopwafel')->setSubItems([
             MenuItem::linkToCrud('Tous les plats', 'fas fa-stroopwafel', Dishe::class),

@@ -39,20 +39,19 @@ class FormuleRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Formule[] Returns an array of Formule objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('f')
-//            ->andWhere('f.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('f.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Formule[] Returns an array of Formule objects
+     */
+    public function findByVisible($visible): array
+    {
+        return $this->createQueryBuilder('f')
+            ->andWhere('f.visible = :visible')
+            ->setParameter('visible', $visible)
+            ->orderBy('f.menu', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
 //    public function findOneBySomeField($value): ?Formule
 //    {
