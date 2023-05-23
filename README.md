@@ -27,6 +27,44 @@ C'est dans cette partie que vous définissez égalemenr le nombre de places disp
 
 22 - Les réservations
 
-C'est dans cette partie que vous pouvez voir les réservations de vos clients mais également en ajouter à la main.
+C'est dans cette partie que vous pouvez voir les réservations de vos clients.
 
+- Quand vous êtes sur "Toutes mes réservations", vous pouvez cocher la case "Validé" qui vous permet de savoir que en interne vous avez pris en compte la réservation, cela n'envoie rien au client.
+
+23 - Messagerie
+
+Vous trouverez ici les messages de vos clients envoyés via le formulaire du site.
+Vous ne pouvez pas y répondre directement, il faudra lui envoyer un mail avec votre messagerie.
+Une fois le message lu, vous pouvez cocher la cas "Lu".
+
+24 - Les plates et catégories
+
+- Les catégories vont regrouper vos plats, ici j'ai créé trois catégories, Entrée, Plat et Dessert. Vous pouvez en créer atutant que vous voulez. Créez toujours la catégorie avant le plat.
+- Pour les plats, il faut leur donner une catégorie pour les ranger quelque dans le site. Ensuite, vous pouvez rendre un plat "visible" ou "Non-visible" sans l'annuler, pour les plats saisonniers par exemple.
+
+25 - Les menus et formules
+
+- Les menus sont la base du fonctionnement et c'est eux qui contiendront les formules. Il faut les créer avant les formules. Il y a déjà deux exemples de créé.
+- Les formules sont rangées dans les menus, et peuvent être "Visible" ou non comme les plats.
+
+26 - Les photos
+
+Il y a de base la possibilité de mettre 6 photos sur la page d'accueil et seulement 6 pour l'instant.
+Par contre vous pouvez télécharger d'autres photos et les changer en les randant "Visisble" ou non. Si vous rendez visible 7 photo seulement 6 s'afficheront.
+ATTENETION pour un rendu visuel optimal gardez toujours la même taille de photo !
+
+27 - Les horraires 
+
+Cet onglet vous permet de gérer les horaires d'ouverture du rest mais également les horaires de réservation (en automatique).
+Vous pouvez modifier les horaires existant à votre guise.
+
+28 - Les utilisateurs
+
+Vous retrouvez ici tous les compte utilisateurs, le votre et ceux des clients. Vous avez la possibilité de modifier les informations de base du client, comme son nom, son téléphon, le nombre de réservation et ses allergies.
+
+3 - Point sur le fonctionnement des réservations
+
+Depuis le site, un client peut faire une réservation, si il est connecté ses informations de base sont automatiquement ajpoutées au formulaire.
+Ensuite il doit choisir une date avec le calendrier, et les choix d'horaires automatiques s'afficheront dans le champ requis, toutes les 15 minutes sauf 1h avant la fermeture.
+Il y a de manière automatique un comptage des reservations, si il n'y a plus de places, alors les horaires ne s'afficheront pas et le client ne pourra pas finaliser sa réservation.
  
