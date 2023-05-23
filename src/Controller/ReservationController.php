@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Reservation;
+use App\Entity\SheduleResa;
+use App\Entity\User;
 use App\Form\ReservationType;
 use App\Repository\ResarvationRepository;
 use App\Repository\RestaurantRepository;
@@ -20,19 +22,18 @@ class ReservationController extends AbstractController
     public function index(Request $request, UserRepository $userRepository, EntityManagerInterface  $em, RestaurantRepository $restaurantRepository, ResarvationRepository $resarvationRepository): Response
     {
 
-
-
-
         $resa = new Reservation();
         $resa->setValidated(false);
-        if ($this->getUser() != null){
 
-            $mail = $this->getUser()->getUserIdentifier();
-            //$resa->setAllergy($user->getAl);
-            $user = $userRepository->findByEmail($mail);
-            $resa->setCustomerName($user['0']->getFullName());
-            $resa->setAllergy($user['0']->getAllergy());
-            $resa->setNbrReservation($user['0']->getNbrResa());
+
+        /** @var User $user */
+        $user = $this->getUser();
+
+        if ($user !== null){
+
+            $resa->setCustomerName($user->getFullName());
+            $resa->setAllergy($user->getAllergy());
+            $resa->setNbrReservation($user->getNbrResa());
         }
 
         $form = $this->createForm(ReservationType::class, ($resa)) ;
@@ -42,7 +43,6 @@ class ReservationController extends AbstractController
            if ($form->isSubmitted() && $form->isValid()) {
                 $em->persist($resa);
                 $em->flush();
-
                $message = 'Votre réservation a bien été prise en compte !';
            }
 

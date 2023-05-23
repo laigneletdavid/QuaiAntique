@@ -39,20 +39,20 @@ class ReservationRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Reservation[] Returns an array of Reservation objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('r')
-//            ->andWhere('r.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('r.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+
+    public function countResa(\DateTime $date, string $period): int
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.reserved_at = :date')
+            ->andWhere('r.period = :period')
+            ->setParameter('date', $date)
+            ->setParameter('period', $period)
+            ->select('sum(r.nbr_reservation)')
+            ->getQuery()
+            ->getSingleScalarResult() ?? 0
+
+        ;
+    }
 
 //    public function findOneBySomeField($value): ?Reservation
 //    {

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\RestaurantRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: RestaurantRepository::class)]
@@ -39,6 +40,9 @@ class Restaurant
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $iframe_maps = null;
 
     public function getId(): ?int
     {
@@ -149,6 +153,18 @@ class Restaurant
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getIframeMaps(): ?string
+    {
+        return $this->iframe_maps;
+    }
+
+    public function setIframeMaps(?string $iframe_maps): self
+    {
+        $this->iframe_maps = $iframe_maps;
 
         return $this;
     }

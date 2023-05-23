@@ -3,9 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ReservationRepository;
-use Cassandra\Time;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\DBAL\Types\Types;
-use Symfony\Component\Form\FormTypeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ReservationRepository::class)]
@@ -31,7 +30,8 @@ class Reservation
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $reserved_at = null;
 
-    #[ORM\Column(length: 5)]
+    #[ORM\Column()]
+    #[Assert\NotBlank]
     private ?string $reserved_time = null;
 
     #[ORM\Column]
@@ -140,4 +140,5 @@ class Reservation
 
         return $this;
     }
+
 }

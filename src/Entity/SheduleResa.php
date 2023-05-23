@@ -22,13 +22,13 @@ class SheduleResa
     #[ORM\Column(length: 255)]
     private ?string $period = null;
 
-    #[ORM\OneToMany(mappedBy: 'shedule_resa', targetEntity: Resarvation::class)]
-    private Collection $resarvations;
+    #[ORM\OneToMany(mappedBy: 'shedule_resa', targetEntity: Reservation::class)]
+    private Collection $reservations;
 
 
     public function __construct()
     {
-        $this->resarvations = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -61,29 +61,29 @@ class SheduleResa
     }
 
     /**
-     * @return Collection<int, Resarvation>
+     * @return Collection<int, Reservation>
      */
-    public function getResarvations(): Collection
+    public function getreservations(): Collection
     {
-        return $this->resarvations;
+        return $this->reservations;
     }
 
-    public function addResarvation(Resarvation $resarvation): self
+    public function addreservation(Reservation $reservation): self
     {
-        if (!$this->resarvations->contains($resarvation)) {
-            $this->resarvations->add($resarvation);
-            $resarvation->setSheduleResa($this);
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations->add($reservation);
+            $reservation->setSheduleResa($this);
         }
 
         return $this;
     }
 
-    public function removeResarvation(Resarvation $resarvation): self
+    public function removereservation(Reservation $reservation): self
     {
-        if ($this->resarvations->removeElement($resarvation)) {
+        if ($this->reservations->removeElement($reservation)) {
             // set the owning side to null (unless already changed)
-            if ($resarvation->getSheduleResa() === $this) {
-                $resarvation->setSheduleResa(null);
+            if ($reservation->getSheduleResa() === $this) {
+                $reservation->setSheduleResa(null);
             }
         }
 
